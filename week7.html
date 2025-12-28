@@ -28,27 +28,84 @@
                 <li><a href="week6.html">Week 6</a></li>
                 <li><a href="week7.html">Week 7</a></li>
                 <li><a href="week8.html">Week 8</a></li>
+                <li><a href="week9.html">Week 9</a></li>
+                <li><a href="week10.html">Week 10</a></li>
+                <li><a href="week11.html">Week 11</a></li>
+                <li><a href="week12.html">Week 12</a></li>
                  </ul>
         </div>
         <page>
             <h3>Week 7</h3>
-            <h2>Subtitle</h2>
+            <h2>Mijn ervaring</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis pulvinar nisl, sed ultrices purus ornare et...
+                In deze week moesten we alles dat we hadden gemaakt voor onze website in html omzetten naar een Tailwind versie. 
+                <p>
+                    Vele leerlingen met een windows computer hadden problemen met het installeren van Tailwind, mezelf inbegrepen. Na veel proberen en wat hulp is het me uiteindelijk toch gelukt om Tailwind werkend te krijgen op mijn computer.
+                </p>
+                <p>
+                    Na het omzetten naar Tailwind, wou ik dat mijn website dezelfde stijl had als mijn mobiele schermen. In de foto hieronder zie je hoe het eruitzag voordat ik de stijl had aangepast. Je ziet ook dat ik nog niet veel had veranderd aan de website.
             </p>
-            <!-- Flex container with 2 columns -->
-            <div class="two-columns">
-                <div class="column">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis pulvinar nisl, sed ultrices purus ornare et. Phasellus sit amet lacus urna.
-                    </p>
-                </div>
-                <div class="column">
-                    <p>
-                        Nullam iaculis tristique varius. Donec placerat blandit leo. Vestibulum a dolor sed ex ornare finibus. Suspendisse pretium molestie orci.
-                    </p>
-                </div>
+            <div class="image-row2">
+            <img src="Images/HTML1.png" alt="HTML1" width="600" style="display: block; margin: 50px auto; " class="clickable-img">
+            <img src="Images/TWND1.png" alt="Tailwind1" width="600" style="display: block; margin: 50px auto; " class="clickable-img">
             </div>
+            <p>
+                Ik heb ook wat meer interactieve elementen toegevoegd aan de website zodat het een prettigere ervaring is voor de gebruiker. Door dezelfde stijl te gebruiken als in mijn mobiele schermen heb ik geprobeerd een gevoel van samenhang te creëren tussen mijn verschillende ontwerpen.
+            </p>
+            <div class="image-row2">
+            <img src="Images/HTML2.png" alt="HTML2" width="600" style="display: block; margin: 50px auto; " class="clickable-img">
+            <img src="Images/TWND2.png" alt="Tailwind2" width="600" style="display: block; margin: 50px auto; " class="clickable-img">
+            </div>
+            </div>
+            <div id="imgModal" class="modal" aria-hidden="true">
+		<div class="modal-content" role="dialog" aria-modal="true">
+			<button class="modal-close" aria-label="Sluit (Esc)">&times;</button>
+			<img class="modal-img" src="" alt="">
+		</div>
+	</div>
+
+	<!-- Script: open/close modal -->
+	<script>
+		// ...small, self-contained script...
+		(function(){
+			const modal = document.getElementById('imgModal');
+			const modalImg = modal.querySelector('.modal-img');
+			const closeBtn = modal.querySelector('.modal-close');
+			const imgs = document.querySelectorAll('.clickable-img');
+
+			function open(src, alt){
+				modalImg.src = src;
+				modalImg.alt = alt || '';
+				modal.classList.add('open');
+				modal.setAttribute('aria-hidden','false');
+				document.body.style.overflow = 'hidden';
+				closeBtn.focus();
+			}
+			function close(){
+				modal.classList.remove('open');
+				modal.setAttribute('aria-hidden','true');
+				modalImg.src = '';
+				document.body.style.overflow = '';
+			}
+
+			imgs.forEach(img => {
+				img.style.cursor = 'zoom-in';
+				img.setAttribute('tabindex','0');
+				img.addEventListener('click', () => open(img.src, img.alt));
+				img.addEventListener('keydown', (e) => {
+					if(e.key === 'Enter' || e.key === ' ') open(img.src, img.alt);
+				});
+			});
+
+			closeBtn.addEventListener('click', close);
+			modal.addEventListener('click', e => {
+				if(e.target === modal) close();
+			});
+			document.addEventListener('keydown', e => {
+				if(e.key === 'Escape' && modal.classList.contains('open')) close();
+			});
+		})();
+	</script>
         </page>
     </div>
 </body>

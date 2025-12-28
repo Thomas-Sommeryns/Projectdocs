@@ -44,7 +44,10 @@
     width: fit-content;
 }
 .vertical-buttons2 li a {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
     padding: 0px 0px;
     background-color: inherit;
     color: inherit;
